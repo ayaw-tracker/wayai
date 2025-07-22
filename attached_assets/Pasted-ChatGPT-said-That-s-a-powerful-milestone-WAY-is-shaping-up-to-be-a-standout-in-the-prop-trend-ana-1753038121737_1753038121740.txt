@@ -1,0 +1,90 @@
+ChatGPT said:
+That’s a powerful milestone — WAY is shaping up to be a standout in the prop trend analytics space. Now that your core UI, mock AI engine, and backend are functional, here’s a prioritized list of what the agent (or you) should tackle next:
+
+🔁 Priority Next Steps (Post-MVP)
+1. 🔍 Real Data Integration – Source Parsers
+Replace mock data with live or semi-live props from real platforms.
+
+Goal: Daily ingestion of trending props from public sources.
+
+Options:
+
+Reddit Scraper: Parse r/sportsbook + r/dfsports for prop mentions (e.g., using keywords like "Over", "Under", "O/U")
+
+Twitter/X: Search hashtags or keywords like #PrizePicks or Over 6.5 K
+
+Action Network (Public Leaderboards): Scrape or simulate top tracked bets
+
+🔧 Store data in trendHistory.json or pipe it into a lightweight in-memory DB.
+
+2. 🧠 Real AI Prompt Integration (OpenAI or DeepSeek)
+Make the AI prompt bar actually respond to user input dynamically.
+
+Tasks:
+
+Connect the PromptBox.tsx to OpenAI API (or DeepSeek’s)
+
+Feed it daily trend data as context (props, public %, history)
+
+Implement prompt templates like:
+
+ts
+Copy
+Edit
+"What are the top 3 public-heavy props with poor hit rates in the last 7 days?"
+3. 📊 Historical Accuracy Tracker
+Add a system that tracks:
+
+Did the top 5 props from yesterday hit or miss?
+
+What is the hit rate of heavily tailed props (public >70%) this week?
+
+How:
+
+Add a “Result” field to each tracked prop (W/L)
+
+Auto-classify next day based on box score (future step)
+
+Update trend cards with a history badge:
+✅ "Trending props are hitting at 61% this week"
+❌ "Last time Jokic Over 26.5 was this popular, it missed"
+
+4. 🚨 AI-Flagged Traps and Fade Radar
+Create an internal AI or rules engine that identifies:
+
+Props with 80%+ public backing + line movement
+
+Picks that are overly consistent across all platforms (herd behavior)
+
+Props with historical fade value
+
+Example Tags:
+
+🚨 Crowd Trap
+
+🧠 Sharp Pivot
+
+🔄 Reverse Line Movement
+
+📉 Losing Trend (0-3 streak)
+
+This gives WAY character — not just data, but opinion and alerts.
+
+5. 🌍 Export or Embed Mode
+Eventually allow:
+
+Prop trend insights to be embedded (read-only) on another site (like AYAW)
+
+Export trend snapshots as JSON/CSV (for future ML work)
+
+You don’t need this now, but architecting for it helps.
+
+🪜 Bonus Stretch Features (Phase 2+)
+Feature	Value
+Voice prompt mode	Ask WAY a question verbally (fun for mobile)
+Prop comparison tool	“Who’s actually winning: Over or Under bettors?”
+Public vs Sharp % Split	Once you get real data from betting APIs or models
+Prop pattern recognizer	"This type of Jokic prop (O/U 25–27 pts) loses 65% when public >80%"
+
+🧠 Suggested Next Agent Task
+“Begin building the Reddit + Twitter/X prop trend scraper module. Use NLP to identify Over/Under patterns, and feed the output into the backend trend feed for live use.”

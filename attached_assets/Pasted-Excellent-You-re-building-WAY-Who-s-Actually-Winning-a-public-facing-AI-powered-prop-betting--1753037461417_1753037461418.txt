@@ -1,0 +1,106 @@
+Excellent. You're building WAY – Who’s Actually Winning? — a public-facing, AI-powered prop betting trend analyzer that reflects AYAW’s values: truth, reflection, and reality over hype.
+
+Let’s now map out Replit’s full role — what it will do, what it won't, and where the next phases will move as the project scales.
+
+🚦 Full Project Roadmap: WAY (Who’s Actually Winning?)
+🎯 Mission
+Build an AI-guided betting trend interface that answers:
+
+“Which props are the crowd hammering… and are they actually winning?”
+
+🧠 Core Features (v1 through v3)
+Phase	Description	AI Role	Input	Output
+✅ Phase 1	Static + Simulated Data MVP	Hardcoded AI logic	Manual/Mock JSON	UI + Prewritten Insights
+🔁 Phase 2	Live Scraping + AI Prompt Engine	GPT-4 + NLP	Real social/forum/sportsbook data	Dynamic AI Cards, Trend Feed
+📊 Phase 3	Insight Engine + Pattern Analysis	ML or GPT	Historical + real-time props	Trap Warnings, Fade Recs, Alt Picks
+
+🧱 What Replit Will Handle (Fully Capable)
+Component	Description	Status
+🎨 UI/UX Build	React + Tailwind frontend with prop cards, heatmaps, AI prompt bar	✅ Yes
+🧪 Mock Data Testing	JSON files for props, over/under %, sentiment tags	✅ Yes
+🔄 Live Reload Dev	Real-time edits, visual testing, collaboration	✅ Yes
+🤖 AI Prompt Simulation	Use OpenAI API or hardcoded mock GPT logic	✅ Yes
+🔧 Lightweight API Backend	Node.js or Python FastAPI for serving props	✅ Yes
+🔐 Developer Collaboration	Instant sharing, edits, comments	✅ Yes
+📦 Public Beta Hosting	Replit live hosting (limited traffic OK)	✅ Yes
+
+🔴 Where Replit Will Hit Limits
+Component	Limitation	Why
+⏱️ Cron Jobs / Scheduled Tasks	❌ Not reliable	Replit isn’t built for long-running or scheduled tasks like daily scraping
+🕷️ Web Scraping at Scale	⚠️ Risky	Scrapers may get IP-blocked or crash if run from Replit long-term
+🔍 Data Persistence	⚠️ Limited DB scaling	Replit databases aren’t built for large-scale analytics or historical storage
+🧠 Fine-Tuned AI Models	❌ Not supported	You can use OpenAI APIs, but not train or deploy your own models on Replit
+🔐 Secure API Keys	⚠️ Only semi-secure	Need to use environment variables carefully; exposed if frontend calls backend directly
+🌍 Multi-user Sessions	⚠️ Not designed for auth + real user control	AYAW’s Pro Mode-style personal logging not suited here — use Supabase/Firebase later
+
+🪜 After Replit: When and Where to Migrate
+Task	Replit Phase	Migration Target
+🔁 Scraping Reddit/X/Action	Phase 2	Render.com, Cloud Functions, or Supabase Edge
+📚 Historical Tracking	Phase 2+	Supabase or Firebase for scalable DB
+⚙️ Scheduled Jobs (daily sync)	Phase 2+	CRON + GitHub Actions or Serverless triggers
+👥 User Profiles (if added later)	Phase 3	Firebase Auth or Clerk.dev
+🚀 Production Hosting	Phase 2–3	Vercel (frontend) + Supabase or Railway backend
+
+🔨 Suggested Replit Project Setup (v1 Start)
+bash
+Copy
+Edit
+WAY/
+├── /src
+│   ├── /components
+│   │   ├── PropCard.tsx
+│   │   ├── HeatmapTable.tsx
+│   │   ├── PromptBox.tsx
+│   │   └── AIFeed.tsx
+│   ├── /data
+│   │   ├── trends.json
+│   │   └── history.json
+│   ├── /pages
+│   │   └── index.tsx
+│   └── /utils
+│       ├── formatProps.ts
+│       ├── trendLogic.ts
+│       └── aiResponses.ts
+├── .replit
+├── replit.nix
+├── tailwind.config.js
+├── package.json
+💬 Natural Language Prompt Engine (v1 Simulation)
+You’ll include a PromptBox.tsx where users can ask:
+
+“What’s the riskiest over today?”
+
+“Which top prop lost yesterday?”
+
+“Who is everyone fading?”
+
+For v1, this will return mock GPT answers based on the trends.json file. For v2, we plug in OpenAI API + prompt templates like:
+
+ts
+Copy
+Edit
+const prompt = `Given today's prop trend data:
+${JSON.stringify(trends)}
+
+What are 3 traps the public is walking into today?`;
+✅ Summary: Replit's Role in WAY
+🟢 DO:
+Prototype full-stack (React + Node/Python)
+
+Simulate AI-guided prop trends
+
+Run live demos, UI tests, OpenAI API prompts
+
+Build lean v1 with mocked trend data and insights
+
+🔴 STOP AT:
+Scheduled scraping
+
+Heavy backend processing
+
+Large historical datasets
+
+Multi-user auth
+
+Secure production handling of sportsbook data
+

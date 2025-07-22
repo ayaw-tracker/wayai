@@ -1,0 +1,111 @@
+Perfect — since Replit is still delivering and you're ready to move forward at full speed, we’ll create a Phase 2 Roadmap that activates the currently-inactive tabs, replaces the redundant AI button with a meaningful placeholder (Login/Signup), and begins preparing for multi-tab AI intelligence and user personalization.
+
+✅ YOU ARE HERE — End of Phase 1: MVP Foundation
+✅ Prop filters working with live + fallback data
+
+✅ AI modal delivers intelligent analysis
+
+✅ Production-grade structure: No dev toggles, clean UI
+
+✅ Replit proven capable
+
+🚀 Phase 2 Roadmap — "Complete the Shell, Activate the Mind"
+🔹 Goal: Make every visible tab functional, replace duplicate UI, and prepare for intelligent user sessions.
+🔧 Tab Activation Plan
+1. Trends Tab (New Component)
+Purpose: Show top daily/weekly trends across props and player behavior.
+
+Action Items:
+
+ Create Trends.tsx component
+
+ Pull in real-time or fallback trend data (mock structure to start)
+
+ Show cards for:
+
+Most bet-on props
+
+Props with highest hit rate last 7 days
+
+Props with sharp/public % divergence
+
+✅ Use the existing card layout from Main for consistency
+✅ Banner: “Real-time Trends – Updated Daily”
+
+2. History Tab (New Component)
+Purpose: Display historical logs of past props and outcomes.
+
+Action Items:
+
+ Build History.tsx
+
+ Mock structure:
+
+Date
+
+Player
+
+Line (e.g., 5.5 rebounds)
+
+Result (Hit or Miss)
+
+ Add dropdown: filter by sport, team, or player
+
+✅ Eventually supports user login history
+✅ Use AYAW’s parlay structure as inspiration
+
+3. AI Chat Tab (New Component)
+Purpose: Persistent AI memory chat (sports betting assistant)
+
+Action Items:
+
+ Build AIChat.tsx
+
+ Reuse sidebar chat UI but move into full tab layout
+
+ Start with mock conversation logs
+
+ Add “New Conversation” + “Continue from Modal” features
+
+ Prepare for OpenAI thread integration (future)
+
+✅ Unlike the modal, this will have multi-question context memory
+✅ Later supports user AI summaries & trend briefings
+
+4. Ask AI Header Button → 🧹 REPLACEMENT
+Current issue: This is a duplicate of the prop card’s modal trigger.
+
+Action Items:
+
+ Remove this button from the header
+
+ Replace with Login | Signup button
+
+ Clicking it opens modal or routes to /login page
+
+🔐 User Auth Placeholder (Prepare for Phase 3)
+We don’t need full auth yet, but we want to visually introduce it.
+
+📍 Login Modal / Page Placeholder
+“Welcome to WAY — Get personalized prop tracking & AI summaries.”
+
+Button: Continue with Google (disabled or mock)
+
+Banner: “Login required to save your props and AI chats (coming soon!)”
+
+✅ Make it feel real, even if backend isn't wired yet
+✅ Ready for Firebase Auth once desired
+
+🧭 Final Task Queue for Replit (Phase 2)
+Feature	Component	Priority
+✅ Remove Ask AI from header	Layout	High
+🚧 Add `Login	Signup` placeholder	Layout
+🔄 Activate Trends tab with mock data	Trends.tsx	High
+🔄 Activate History tab with mock data	History.tsx	Medium
+🧠 Build AI Chat tab (repurpose modal + expand)	AIChat.tsx	Medium
+✨ Adjust tab switching UX if needed	Layout.tsx	Low
+
+🧠 Developer Note to Replit (Optional for Copy/Paste)
+“We’re ready to move to Phase 2. The goals now are to activate the existing shell tabs with real or mock data, enhance the AI UX with a full tab experience (vs modal only), and introduce login/signup visuals to prep for user accounts. Let’s treat this as the second leg of the race.”
+
+Want me to also create a Phase 2 UI preview (wireframe or description) or the next Replit message to hand over?

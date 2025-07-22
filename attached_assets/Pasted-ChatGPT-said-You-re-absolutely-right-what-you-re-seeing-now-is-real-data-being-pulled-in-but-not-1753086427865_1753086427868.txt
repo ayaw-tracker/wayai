@@ -1,0 +1,106 @@
+ChatGPT said:
+You're absolutely right — what you're seeing now is real data being pulled in, but not yet parsed or labeled correctly for your use case. This next phase is about refining the feed so the props are clear, actionable, and edge-worthy.
+
+Let’s break it down:
+
+🧠 What’s Happening Now
+You're getting raw ESPN game data that’s being heuristically turned into props like:
+
+✅ "Arizona Cardinals QB Passing Yards"
+
+✅ "Cleveland Guardians Star Hits"
+
+These are semi-generic because the logic is likely extracting:
+
+team + position + stat category
+
+Possibly grabbing a "top performer" without clear attribution
+
+This is progress, but not yet what a sharp bettor needs. You want:
+
+“Kyler Murray Passing Yards”
+
+“José Ramírez Over/Under 1.5 Hits”
+
+✅ The Goal: Precision Props with Player Names + Context
+Every prop should ideally follow this format:
+
+[Player Name] – [Stat Type] – [Team] – [Over/Under or Value]
+
+Even if it's just:
+
+“Shohei Ohtani – Total Bases – LAA”
+
+🔧 Next Steps for Clean Parsing
+Here’s what Replit (or you, if you're handling code) needs to do:
+
+1. Extract Named Player Tied to Prop
+Instead of:
+
+"Guardians Star Hits"
+
+We want to locate:
+
+player.name from the ESPN data structure
+
+Their team.abbreviation or team.name
+
+Associated stat.category (Hits, Yards, TDs)
+
+✅ Example Logic:
+
+ts
+Copy
+Edit
+const prop = {
+  player: stat.athlete?.displayName ?? "Unknown Player",
+  team: stat.team?.displayName,
+  statType: stat.category, // e.g., "Passing Yards", "Hits"
+}
+Then format it:
+
+ts
+Copy
+Edit
+`${prop.player} – ${prop.statType} (${prop.team})`
+2. Set Rules for Missing Data
+If a player name is missing:
+
+Show: "Unknown Player – Hits (CLE)" or
+
+Suppress the prop if it’s unhelpful
+
+3. Ensure Prop-Specific Context
+If you see “Arizona Cardinals QB Passing Yards,” that’s likely being built from:
+
+team: Arizona Cardinals
+
+position: QB
+
+stat: Passing Yards
+
+But not tied to a specific player, which is the problem.
+
+❗ ESPN sometimes reports team-wide “key stat summaries” (e.g. QB1 totals) that aren’t tagged to a player in the data.
+
+We need to filter those out unless player attribution exists.
+
+🧰 Optional Enhancements (Next Phase)
+Once you get specific props working:
+
+Add Over/Under lines if your sources give them (Underdog, PrizePicks, etc.)
+
+Show “Last updated X mins ago” per prop
+
+Create position groupings (e.g., “RBs”, “Pitchers”) for sorting
+
+🧭 Summary: What You Just Unlocked
+You’re past the mock phase, and live ingestion is real. Now, it’s about making those props meaningful and clear. The work ahead is less about data existence and more about:
+
+🧼 Clean parsing
+
+🧠 Intelligent labeling
+
+🧍 Tying stats to real names
+
+When you're ready, I can help you walk Replit through the code update to add this parsing. You're close now.

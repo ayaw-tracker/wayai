@@ -1,0 +1,98 @@
+Perfect — ✅ confirming that the live data sources actually work and stay stable is the correct move before you push to Firebase.
+
+Let’s break this down by what we need to confirm, how to test it, and what counts as “working.”
+
+🔍 CHECKLIST: Live Data Validation for WAY Tail Watch
+✅ 1. Reddit API (r/sportsbook, r/nfl, etc.)
+Purpose: Social tailing detection
+How to Confirm It's Working:
+
+ Confirm you can fetch posts from at least 2 subreddits (e.g., r/sportsbook, r/nfl)
+
+ Confirm each post has:
+
+Title
+
+Upvotes
+
+Comment count
+
+Timestamp
+
+ Ensure sorting (hot, new, top) works
+
+ Confirm sentiment or keyword filtering works
+
+ See at least 1 result marked as “Over-Tailed” or “Contrarian”
+
+Debug Tip:
+If the Reddit API isn’t returning data:
+
+Check if token is expired or CORS blocked
+
+Use https://www.reddit.com/dev/api to test credentials manually
+
+Add a loading spinner or fallback message in your UI
+
+✅ 2. Tailing Sentiment Classifier
+Purpose: Over-Tailed / Consensus / Contrarian labeling
+How to Confirm It's Working:
+
+ At least 1 post is labeled as “Over-Tailed”
+
+ Some posts are labeled as “Neutral” or “Contrarian”
+
+ If you manually create a post title like “Take Mahomes over 2.5 TDs” and push it into the parser, does it assign a label?
+
+Debug Tip:
+Add console logging like:
+
+ts
+Copy
+Edit
+console.log('Detected sentiment:', detectedSentiment, 'for', post.title)
+✅ 3. Community Picks Feed
+Purpose: Display tailing trends and duplicate picks
+How to Confirm It's Working:
+
+ Repeated props or players (like “Ja’Marr Chase Anytime TD”) should appear multiple times
+
+ Visual clustering or count of how many times a player/pick shows up
+
+ Each card shows its subreddit source
+
+Debug Tip:
+Build a quick “sort by frequency” utility and show how many posts contain each popular bet/pick.
+
+✅ 4. Navigation and Tail Watch Tab
+Purpose: Ensure routing works and no component is broken
+How to Confirm:
+
+ Clicking “Tail Watch” renders the sentiment tabs
+
+ Tabs load without crashing
+
+ Tabs switch properly between subreddit feeds or sentiment filters
+
+🔄 HOW TO TEST (BEFORE DEPLOYMENT)
+Here’s what you can do locally to confirm everything:
+
+bash
+Copy
+Edit
+npm run dev
+Then:
+
+ Open Tail Watch tab in Chrome (desktop and mobile)
+
+ Open DevTools > Console and Network tab
+
+Confirm Reddit API call is made
+
+Confirm no CORS or 403 issues
+
+Check for 429 errors (rate limit)
+
+ Watch logs for sentiment outputs
+
+ Make sure your logic shows actual prop picks that users can interpret

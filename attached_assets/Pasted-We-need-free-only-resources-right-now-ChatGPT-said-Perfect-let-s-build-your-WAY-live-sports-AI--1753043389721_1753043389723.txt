@@ -1,0 +1,80 @@
+We need free only resources right now
+
+
+ChatGPT said:
+Perfect — let’s build your WAY live sports AI platform using only free and reliable data sources. Here's a curated list of APIs and feeds you can use today without cost to cover NFL, NBA, MLB, NHL, and more.
+
+✅ FREE Sports Data Sources for WAY (AI-Compatible)
+These options require no payment and minimal setup, and are suitable for a standalone insights tool like WAY.
+
+🏈 NFL (already partially implemented)
+Source	Data Provided	Notes
+ESPN NFL API (unofficial but stable)	Game schedules, scores, player stats, injuries	JSON via predictable URLs
+Pro Football Reference (via web scraping)	Deep historical stats, play-by-play, betting lines	Use Puppeteer or Cheerio
+The Odds API – Free Tier	Live NFL odds, moneyline, totals, spreads	500 requests/month free
+
+🏀 NBA (free setup possible)
+Source	Data Provided	Notes
+NBA Stats API (unofficial)	Live stats, advanced metrics, shot charts	Use axios/fetch with headers
+ESPN NBA endpoints	Player stats, injuries, game results	Like NFL version
+Basketball Reference	Advanced player/team stats, betting history	Web scraping with Cheerio
+The Odds API (Free tier)	NBA odds + lines	Light use only
+
+⚾ MLB
+Source	Data Provided	Notes
+MLB Stats API (public)	Real-time scores, player data, pitch-by-pitch	Officially supported JSON
+Statcast API	Advanced data (launch angle, exit velocity)	Needs filtering but goldmine
+ESPN MLB endpoints	Live player stats	Plug-and-play
+The Odds API (free)	Live odds + props	Up to 500 req/month
+
+🏒 NHL
+Source	Data Provided	Notes
+NHL Stats API	Player stats, schedules, TOI, shots	Fully free and official
+ESPN NHL endpoints	Injuries, team stats, box scores	Works like NFL/MLB
+
+🎓 NCAA (Football & Basketball)
+Source	Data Provided	Notes
+ESPN NCAAF/NCAAB endpoints	Team stats, injuries, schedule, scores	Unofficial but accessible
+College Football Data API	Free API for NCAAF only	Register for a free token
+The Odds API (free tier)	NCAAF/NCAAB betting lines	Careful with usage limits
+
+📈 Trends, Betting History, & Line Movement (free scrapes only)
+Source	Use Case	Notes
+TeamRankings.com	Historical trends (ATS, over/unders)	Scrape table data into JSON
+Action Network (unofficial)	Betting splits and market %	Careful scraping, data goldmine
+Oddsshark (limited)	Trends and public %	Good for trend AI layers
+
+🔧 Tools to Make It Work
+Tool	Purpose
+axios / fetch	API calls
+cheerio	Lightweight scraping of static sites
+puppeteer	For JavaScript-heavy sites
+Firebase Functions (later)	Wrap + cache your calls for scale and auth safety
+
+✅ Phase-by-Phase Data Integration Roadmap (Free-Only)
+📍 Phase 1: Core Sports Data (Today)
+ NFL (ESPN + The Odds API)
+
+ NBA (NBA Stats API + ESPN)
+
+ MLB (Statcast + ESPN)
+
+ NHL (NHL Stats API)
+
+ Trends: Add basic TeamRankings.com scrape
+
+📍 Phase 2: AI-Readable Structuring
+ Normalize all sport data to a common object
+
+ Tag each game/player with metadata: team, injury, odds
+
+ Add basic AI engine (e.g., "Highlight high xBA hitters today")
+
+📍 Phase 3: Live Tabs Per Sport
+ Sport switcher tab or dropdown
+
+ Load appropriate AI summary cards per sport
+
+ Toast warning if live odds are unavailable (fallback to ESPN/stats)
+
+Would you like me to start drafting the sport switcher UI component and the API call logic for NBA + MLB using only these free sources?

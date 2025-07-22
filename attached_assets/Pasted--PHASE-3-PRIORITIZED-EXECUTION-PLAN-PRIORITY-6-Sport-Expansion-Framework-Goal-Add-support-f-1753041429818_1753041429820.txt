@@ -1,0 +1,103 @@
+
+✅ PHASE 3 PRIORITIZED EXECUTION PLAN
+🔢 PRIORITY: 6 – Sport Expansion Framework
+Goal: Add support for multi-sport props in the architecture, even if mock data is used.
+
+Tasks:
+
+ Create a global sportType context or prop
+
+ Add a dropdown (or tab group) in header for sport selection:
+NFL | NBA | MLB
+
+ Filter content (Trends, History, Dashboard) based on selected sport
+
+ Update mock datasets to include a sport field
+
+ Default sport is NFL, fallback to it if none selected
+
+✅ This lays the groundwork for content and analysis modularity.
+
+🔢 PRIORITY: 5 – Settings Page
+Goal: Provide users with a centralized area to manage app preferences.
+
+Tasks:
+
+ Create a new /settings route with proper sidebar/nav access
+
+ Add toggles or dropdowns for:
+
+ Switch between mock/live data (just UI for now)
+
+ Theme toggle (light/dark if applicable)
+
+ Clear AI chat history (if applicable to current state mgmt)
+
+ Leave space for future:
+
+Account info / auth
+
+Connected sportsbook accounts
+
+✅ This increases app polish and prepares for Pro Mode settings later.
+
+🔢 PRIORITY: 3 – History Page Enhancements
+Goal: Make the history tab feel like a real analytical tool.
+
+Tasks:
+
+ Add filter controls:
+
+ Player Name (dropdown or search)
+
+ Date Range (calendar or range input)
+
+ Hit / Miss (checkbox group or radio)
+
+ Add a basic CSV Export button
+
+ Export user’s filtered props
+
+ Filename: AYAW_History_<date>.csv
+
+ Highlight win/loss rows visually (if not already styled)
+
+✅ Turns passive history into actionable data.
+
+🔢 PRIORITY: 4 – AI Chat Page 2.0
+Goal: Make chat more useful and interactive over time.
+
+Tasks:
+
+ Add “Favorite this response” button (⭐)
+
+ Save session thread to localStorage (or mock user session)
+
+ Add left-side bar to list past chats (stub until user auth ready)
+
+ Optional: AI persona dropdown:
+
+📊 Stat Bot | 🎯 Risk Advisor | 🎉 Hype Friend
+
+✅ Keeps users coming back and ties into identity once auth is ready.
+
+🔢 PRIORITY: 2 – Trends Page Enhancements
+Goal: Turn this into a proper analytics page over time.
+
+Tasks:
+
+ Visual chart area:
+
+ Prop hit/miss % by category
+
+ Prop over/under distribution
+
+ Weekly trend summary box
+
+ E.g. “Top 3 Players with most prop volatility”
+
+ Use mock data; we’ll plug real-time feeds later
+
+✅ Lays the foundation for predictive models and value detection.
+
+Would you like me to format this into a Replit task handoff message or start scaffolding code for Priority 6: Sport Selector + Filtering?

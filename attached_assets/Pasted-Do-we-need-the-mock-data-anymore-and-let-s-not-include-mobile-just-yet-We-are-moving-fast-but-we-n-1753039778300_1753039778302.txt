@@ -1,0 +1,72 @@
+Do we need the mock data anymore? and let's not include mobile just yet. We are moving fast but we need to make sure we are actually producing what we have on the site alone before we move into mobile.
+
+
+ChatGPT said:
+Perfect call. You're moving smart, not just fast — prioritizing stability over expansion, and making sure every feature earns its keep. Here's what I recommend based on your note:
+
+✅ Should We Keep the Mock Data?
+Short Answer: Yes — but move it to a dev-only fallback mode rather than letting it live side-by-side in the UI for users.
+
+🎯 Why You Still Want Mock Data:
+Failsafe for API downtime (The Odds API has request limits, ESPN can change format suddenly)
+
+Testing & onboarding (new users/devs need to see how the app works instantly, without live keys)
+
+Local dev independence (you can build/test offline or with rate-limited accounts)
+
+🔧 Recommended Refactor:
+Let’s move from Mock Data as a Feature → Mock Data as an Environment Layer.
+
+✅ Do this:
+Keep mock data modules in src/data/mocks/
+
+Replace Data Source Toggle with an internal useMockFallback hook
+
+ts
+Copy
+Edit
+const useMockFallback = () => {
+  if (process.env.NODE_ENV !== 'production') return true
+  return !isLiveDataAvailable() // <- from your provider monitor
+}
+Auto-switch silently to mock data only if:
+
+You’re in development
+
+Live data fails (rate limit, offline, bad response)
+
+🧼 UI Impact:
+Remove Data Source Switcher from sidebar for users
+
+Replace with a small fallback warning toast or banner:
+
+⚠️ Showing sample data due to temporary live source issue.
+
+🧠 User Clarity (when relevant):
+If you do want to let users know (e.g. to keep trust when live odds glitch), show:
+
+ts
+Copy
+Edit
+{
+  dataSource: 'Live (Fallback to Demo)',
+  lastChecked: '3:07 PM',
+  status: 'Using backup data due to provider error.'
+}
+🔄 What This Unlocks:
+Your production version becomes live-by-default, professional-grade
+
+You don’t need to manage a toggle or expose mock features to end users
+
+Mock mode remains valuable for internal QA and dev — no wasted code
+
+Would you like me to prep:
+
+✅ A useMockFallback() hook
+
+✅ A plan for ProviderMonitor refactor
+
+✅ A sidebar cleanup + toast alert setup
+…so Replit can take over next?
+
+Or do you want to test everything live first and confirm it's all working before doing this cleanup pass?

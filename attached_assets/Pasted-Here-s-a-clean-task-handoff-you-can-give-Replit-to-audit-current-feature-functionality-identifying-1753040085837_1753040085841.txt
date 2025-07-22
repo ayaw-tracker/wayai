@@ -1,0 +1,70 @@
+Here's a clean task handoff you can give Replit to audit current feature functionality — identifying what's live, what's a placeholder, and what’s non-functional in your production build:
+
+✅ Replit Developer Task: Feature Functionality Audit
+Goal: Evaluate the current production build of the WAY (What Are You Actually Betting On?) platform and report which components and buttons are functional, which are mock/demo-only, and which are non-functional or visual placeholders.
+
+🧪 1. Data Sources and Insight Rendering
+✅ Confirm: Live data is used in production (Odds API, ESPN API).
+
+🔍 Check:
+
+Does each insight card (trap detection, sharp money, weather, fades) reflect real-time data?
+
+Are there any hardcoded or mock responses still being used?
+
+🔧 If any components are still showing mocked insight blocks, flag them.
+
+📊 2. AI Analyst Output System
+✅ Confirm: The AI response engine is hooked up to the smart prompting system.
+
+🔍 Check:
+
+Does each query type (e.g. “Is this a trap?”, “Any sharp money on Dodgers?”) route correctly to the right prompt logic?
+
+Are we receiving mocked static responses, or does the prompt pipeline actually run and return varied results?
+
+⚠️ Note: Identify if response formatting is static (mock JSON) or dynamic from LLM layer.
+
+🎛️ 3. UI Button Audit
+Sidebar
+ Which sidebar nav buttons actually load real data or dynamic views?
+
+ Which are stubs or non-interactive placeholders?
+
+Dashboard Tiles
+ Which tiles/charts/summary blocks reflect live computed insights?
+
+ Are any of them showing static charts (e.g., sample trap stats or generic sharp fade examples)?
+
+Forms/Input Fields
+ Are the user input forms (game query box, AI question bar, etc.) actually submitting data to live logic?
+
+ Any fields wired but returning no dynamic value or always giving a canned message?
+
+⚠️ 4. Mock / Dev Artifacts Check
+ Verify that no internal dev toggles, mock buttons, or test UI elements are showing in production.
+
+ Confirm dev-only components (data switcher, mock logs) are hidden or stripped from build.
+
+✅ Final Output
+Provide a summary in this format:
+
+diff
+Copy
+Edit
+Live & Functional:
+- Game query bar
+- Trap Detection module (fully hooked to live data)
+- Weather overlay on game cards
+
+Mocked / Needs Hook-up:
+- Sharp money insights (static output)
+- Player prop AI responses (template only)
+- Fade recommendations module (pending LLM connection)
+
+Non-functional / Placeholder:
+- “Bet Smarter” sidebar button (visual only)
+- Stats Overview tile (no dynamic connection)
+Once this audit is returned, we’ll decide what to finish, what to hide, and how to tighten the core user experience around only the proven live features.
+
+Would you like me to prep a one-click version of this task to send Replit via the sidebar chat, or do you want to copy and paste the full prompt manually?

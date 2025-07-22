@@ -1,0 +1,99 @@
+Here's a draft logic flow for building a scraper system to retrieve prop lines, public percentages, movement, and other relevant data from PrizePicks, Underdog, and mainstream sportsbooks (e.g., DraftKings, FanDuel), all while staying focused on free and legally scrappable endpoints:
+
+🧠 Way AI: Prop Line & Sentiment Scraper Logic
+✅ GOAL:
+To gather real-time prop lines, public betting sentiment, and line movement across multiple platforms — enabling Way AI to make informed insights, spot line inefficiencies, and deliver actionable alerts.
+
+🧩 SYSTEM MODULES
+1. 📄 Target Sites & Data Points
+Site	Target Data	Accessibility
+PrizePicks	Player name, stat type, line, projection	Requires dynamic scraping (JS-heavy)
+Underdog Fantasy	Same as above	Similar structure to PrizePicks
+DraftKings	Prop line, movement, public % if shown	Some APIs can be hit
+FanDuel	Prop line, movement, status	Heavier obfuscation
+Reddit (r/sportsbook, r/dfsports)	Trending picks, crowd opinions	Free + open
+X.com (Betting tipster accounts)	“Leans”/tailing % sentiment	Needs smart filtering
+
+2. 🔧 Scraper Stack (Free + Efficient)
+Node.js + Puppeteer / Playwright
+
+For dynamic sites like PrizePicks and Underdog (scrolling, JS-rendered).
+
+Axios / Cheerio (Fast HTTP)
+
+For static content, API-based data (e.g., DraftKings public endpoints).
+
+Rate Limiting & Throttling
+
+To avoid bans. Use rotating User-Agents and proxy support.
+
+3. ⚙️ Scraper Logic Pseudocode
+ts
+Copy
+Edit
+function scrapePrizePicks() {
+  const browser = launchHeadlessBrowser();
+  const page = browser.newPage();
+  
+  page.goto('https://app.prizepicks.com/');
+  waitForReactComponentLoad();
+
+  const props = page.evaluate(() => {
+    return document.querySelectorAll('.prop-card').map(card => ({
+      player: card.querySelector('.name').textContent,
+      stat: card.querySelector('.stat-type').textContent,
+      line: parseFloat(card.querySelector('.line').textContent),
+      team: extractTeamFromContext(card),
+      status: extractStatus(card),
+    }));
+  });
+
+  return props;
+}
+4. 📈 Line Movement Tracking
+Store every scrape in a timestamped DB (e.g., Firebase, SQLite).
+
+Calculate movement:
+
+ts
+Copy
+Edit
+movement = currentLine - previousLine;
+direction = movement > 0 ? '↑' : '↓';
+5. 🔮 AI Alert Logic (Prototype)
+ts
+Copy
+Edit
+if (publicPercent > 75 && moneyPercent < 55 && lineMovesAgainstPublic) {
+  sendAIAlert("🚨 Reverse Line Movement on [Player/Stat]");
+}
+6. 🧠 Smart Search Tagging
+As props are scraped, store these attributes as searchable tags:
+
+Player name
+
+Team
+
+Stat type (PTS, K, REB, etc.)
+
+Book source
+
+Line value
+
+Sentiment strength (🔥, ❄️, 🚨)
+
+Movement pattern
+
+7. 📬 Schedule + Frequency
+Scrape every 3–5 minutes during high traffic (game days).
+
+Scrape every 15–30 min off-peak.
+
+8. 🔐 Storage Plan (Short-Term)
+Use Firebase Firestore or Replit DB
+
+Collections:
+
+props_today (live, overwrite)
+
+prop_history (archival, trend use later)
