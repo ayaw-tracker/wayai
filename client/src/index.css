@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(217, 33%, 17%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(158, 64%, 52%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(217, 33%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(217, 33%, 17%);
+  --radius: 0.5rem;
+
+  /* Custom betting theme colors */
+  --dark: hsl(222, 84%, 5%);
+  --dark-secondary: hsl(217, 33%, 17%);
+  --dark-tertiary: hsl(215, 25%, 27%);
+  --accent-green: hsl(158, 64%, 52%);
+  --accent-red: hsl(0, 84%, 60%);
+  --accent-amber: hsl(43, 96%, 56%);
+  --text-primary: hsl(210, 40%, 98%);
+  --text-secondary: hsl(215, 20%, 65%);
+  --text-muted: hsl(215, 14%, 34%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(217, 33%, 17%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(158, 64%, 52%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(217, 33%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(217, 33%, 17%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: var(--dark);
+    color: var(--text-primary);
+  }
+  
+  .bg-dark {
+    background-color: var(--dark);
+  }
+  
+  .bg-dark-secondary {
+    background-color: var(--dark-secondary);
+  }
+  
+  .bg-dark-tertiary {
+    background-color: var(--dark-tertiary);
+  }
+  
+  .text-accent-green {
+    color: var(--accent-green);
+  }
+  
+  .text-accent-red {
+    color: var(--accent-red);
+  }
+  
+  .text-accent-amber {
+    color: var(--accent-amber);
+  }
+  
+  .text-text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .text-text-muted {
+    color: var(--text-muted);
+  }
+  
+  .border-dark-tertiary {
+    border-color: var(--dark-tertiary);
+  }
+  
+  .bg-accent-green {
+    background-color: var(--accent-green);
+  }
+  
+  .bg-accent-red {
+    background-color: var(--accent-red);
+  }
+  
+  .bg-accent-amber {
+    background-color: var(--accent-amber);
+  }
+  
+  .hover\:bg-green-600:hover {
+    background-color: hsl(158, 64%, 42%);
+  }
+}
+
+@layer components {
+  .progress-bar {
+    @apply w-full h-2 rounded-full overflow-hidden;
+    background-color: var(--dark-tertiary);
+  }
+  
+  .progress-bar-fill {
+    @apply h-full transition-all duration-300 ease-in-out;
+  }
+  
+  .progress-bar-fill.green {
+    background-color: var(--accent-green);
+  }
+  
+  .progress-bar-fill.red {
+    background-color: var(--accent-red);
+  }
+  
+  .progress-bar-fill.amber {
+    background-color: var(--accent-amber);
+  }
+  
+  .sentiment-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .sentiment-badge.public-trap {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--accent-red);
+  }
+  
+  .sentiment-badge.fade-alert {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--accent-red);
+  }
+  
+  .sentiment-badge.sharp-play {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: var(--accent-green);
+  }
+  
+  .sentiment-badge.neutral {
+    background-color: rgba(100, 116, 139, 0.2);
+    color: var(--text-muted);
+  }
+}
